@@ -201,5 +201,5 @@ footer button{margin-top:10px;font:inherit;font-size:.78rem;padding:9px 15px;bor
   document.getElementById('savenote').textContent=' Ticks are saved on this device.';
   refresh();
 })();
-</script><script>if('serviceWorker' in navigator)addEventListener('load',function(){navigator.serviceWorker.register('./sw.js');});</script>
+</script><script>if('serviceWorker' in navigator){var had=!!navigator.serviceWorker.controller;navigator.serviceWorker.addEventListener('controllerchange',function(){if(had)location.reload();had=true;});addEventListener('load',function(){navigator.serviceWorker.register('./sw.js',{updateViaCache:'none'}).then(function(r){document.addEventListener('visibilitychange',function(){if(document.visibilityState==='visible')r.update();});});});}</script>
 </body></html>
