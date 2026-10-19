@@ -2,7 +2,7 @@
    in index.html, so caching that one file is enough. The page itself is network-first
    (with a short timeout, so weak hall wifi falls back to the cache fast) - cache-first
    kept serving the old route after every update. Everything else stays cache-first. */
-const CACHE = 'essen26-20261019-1413';
+const CACHE = 'essen26-20261019-1418';
 const ASSETS = ['./', './index.html'];
 self.addEventListener('install', e => {
   e.waitUntil(caches.open(CACHE).then(c => c.addAll(ASSETS)).then(() => self.skipWaiting()));
