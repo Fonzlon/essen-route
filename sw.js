@@ -2,7 +2,7 @@
    in index.html, so caching that one file is enough. The page itself is network-first
    (with a short timeout, so weak hall wifi falls back to the cache fast) - cache-first
    kept serving the old route after every update. Everything else stays cache-first. */
-const CACHE = 'essen26-20261019-1356';
+const CACHE = 'essen26-20261019-1358';
 const ASSETS = ['./', './index.html', './manifest.webmanifest',
                 './icon-192.png', './icon-512.png', './apple-touch-icon.png'];
 self.addEventListener('install', e => {

@@ -85,7 +85,7 @@ footer button{margin-top:10px;font:inherit;font-size:.78rem;padding:9px 15px;bor
 <header>
   <h1>SPIEL Essen 2026 &middot; Pickup Route</h1>
   <div class="bar"><i id="pb"></i></div>
-  <div class="meta" id="meta">34 games (26 yours, 8 friends&rsquo;) &middot; 22 stops &middot; 6 pre-orders still to pay for</div>
+  <div class="meta" id="meta">26 games &middot; 22 stops &middot; 6 pre-orders still to pay for</div>
 </header>
 <input type="radio" name="tab" id="t-me" class="tabr" checked>
 <input type="radio" name="tab" id="t-fr" class="tabr">
@@ -172,11 +172,10 @@ footer button{margin-top:10px;font:inherit;font-size:.78rem;padding:9px 15px;bor
   var meta=document.getElementById('meta'), pay="6 pre-orders still to pay for";
   function n(list){ return list.filter(function(b){return b.checked;}).length; }
   function refresh(){
-    var a=n(mine), b=n(fr), all=mine.length+fr.length;
-    // the bar is your own games only; friends' games are in the text and on their tab
+    // header text + bar are your own games only; friends' games count on their own tab
+    var a=n(mine), b=n(fr);
     document.getElementById('pb').style.width=mine.length?(a/mine.length*100)+'%':'0';
-    meta.textContent=(a+b)+'/'+all+' games collected \u00b7 yours '+a+'/'+mine.length
-      +' \u00b7 friends\u2019 '+b+'/'+fr.length+' \u00b7 '+pay;
+    meta.textContent=a+'/'+mine.length+' games collected \u00b7 '+pay;
     var fc=document.getElementById('fcount');
     if(fc) fc.textContent=b+'/'+fr.length+' friends\u2019 games collected';
   }
