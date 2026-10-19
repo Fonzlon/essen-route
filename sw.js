@@ -1,6 +1,6 @@
 /* Cache-first so the app works with no signal at all. The whole route, including
    every floor plan, is inlined in index.html, so caching that one file is enough. */
-const CACHE = 'essen26-20261016-1720';
+const CACHE = 'essen26-20261019-1033';
 const ASSETS = ['./', './index.html', './manifest.webmanifest',
                 './icon-192.png', './icon-512.png', './apple-touch-icon.png'];
 self.addEventListener('install', e => {
