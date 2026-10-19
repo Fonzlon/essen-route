@@ -173,7 +173,8 @@ footer button{margin-top:10px;font:inherit;font-size:.78rem;padding:9px 15px;bor
   function n(list){ return list.filter(function(b){return b.checked;}).length; }
   function refresh(){
     var a=n(mine), b=n(fr), all=mine.length+fr.length;
-    document.getElementById('pb').style.width=all?((a+b)/all*100)+'%':'0';
+    // the bar is your own games only; friends' games are in the text and on their tab
+    document.getElementById('pb').style.width=mine.length?(a/mine.length*100)+'%':'0';
     meta.textContent=(a+b)+'/'+all+' games collected \u00b7 yours '+a+'/'+mine.length
       +' \u00b7 friends\u2019 '+b+'/'+fr.length+' \u00b7 '+pay;
     var fc=document.getElementById('fcount');
