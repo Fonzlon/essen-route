@@ -2,9 +2,8 @@
    in index.html, so caching that one file is enough. The page itself is network-first
    (with a short timeout, so weak hall wifi falls back to the cache fast) - cache-first
    kept serving the old route after every update. Everything else stays cache-first. */
-const CACHE = 'essen26-20261019-1405';
-const ASSETS = ['./', './index.html', './manifest.webmanifest',
-                './icon-192.png', './icon-512.png', './apple-touch-icon.png'];
+const CACHE = 'essen26-20261019-1413';
+const ASSETS = ['./', './index.html'];
 self.addEventListener('install', e => {
   e.waitUntil(caches.open(CACHE).then(c => c.addAll(ASSETS)).then(() => self.skipWaiting()));
 });
@@ -28,6 +27,10 @@ self.addEventListener('fetch', e => {
     e.respondWith(fresh(e.request));
     return;
   }
+  // icons + manifest: not intercepted at all, Safari fetches them itself. iOS reads the
+  // touch icon when adding to the home screen and can fall back to a bare letter when a
+  // service worker answers; the page never displays them, so offline loses nothing.
+  if (/\.(png|webmanifest)$/.test(new URL(e.request.url).pathname)) return;
   e.respondWith(
     caches.match(e.request, { ignoreSearch: true })
       .then(hit => hit || fetch(e.request).then(res => {
